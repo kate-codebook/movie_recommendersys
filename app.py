@@ -9,13 +9,12 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a really really really really long secret key'
 
 
-def get_movie_names(): #**change made
+def get_movie_names():
     rating_data = pd.read_csv('ratings.csv')
     movie_data = pd.read_csv('movies.csv')
     user_movie_rating = pd.merge(rating_data, movie_data, on='movieId')
-    common_movie_title_list = user_movie_rating['title'].value_counts()[:200].index.tolist()
-    titles = common_movie_title_list[:10]
-    return titles
+    common_movie_title_list = user_movie_rating['title'].value_counts()[:10].index.tolist()
+    return common_movie_title_list
 
 
 @app.route('/', methods=('GET', 'POST'))
@@ -68,7 +67,8 @@ def item_based():
         print(recommended_movies)
     else:
         print("Result data not being passed correctly")
-    return render_template('item_based.html', result=recommended_movies)
+    # return render_template('item_based.html', result= recommended_movies)
+    return render_template('item_based.html', result = [recommended_movies.to_html(classes='data')])
 
 
 @app.route('/user_based')
