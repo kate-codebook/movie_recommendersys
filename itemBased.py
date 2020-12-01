@@ -23,6 +23,7 @@ def create_item_based_rating(movies):  # movies type dict
         final_df = pd.concat([final_df, df], axis = 1)
     return final_df
 
+
 def sim_cal(df, movie):  # movie that we want to calculate cos_sim with other movies
     df = df[df[movie] != 0]  # delete row that contain 0 in the movie col
     return df.corr(method='pearson')

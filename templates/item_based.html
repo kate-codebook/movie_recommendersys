@@ -45,10 +45,8 @@
     <div class="col-sm-8 text-left">
       <h1>The movies you have been recommended are</h1>
       {% for element in result %}
-            {{ element|safe }}
+        <p>{{ element|safe }}</p>
       {% endfor %}
-    </div>
-
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -56,8 +54,8 @@
         <p>500865018</p>
       </div>
       <div class="well">
-        <p>Kate</p>
-          <p>500462612</p>
+        <p>Hee Kyoung Nam</p>
+        <p>500462612</p>
       </div>
     </div>
   </div>
